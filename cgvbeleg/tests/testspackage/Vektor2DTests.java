@@ -46,7 +46,7 @@ public class Vektor2DTests {
 		// Tests.
 		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
 	}
-	
+
 	@Test
 	public void testDivVektoren( ) {
 		// Initializations.
@@ -60,7 +60,7 @@ public class Vektor2DTests {
 		// Tests.
 		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
 	}
-	
+
 	@Test
 	public void testIsNullVektoren( ) {
 		// Initializations.
@@ -71,7 +71,7 @@ public class Vektor2DTests {
 		assertTrue( vec1.isNullVector( ) );
 		assertFalse( vec2.isNullVector( ) );
 	}
-	
+
 	@Test
 	public void testIsEqualVektoren( ) {
 		// Initializations.
@@ -83,7 +83,7 @@ public class Vektor2DTests {
 		assertTrue( vec1.isEqual( vec2 ) );
 		assertFalse( vec1.isEqual( vec3 ) );
 	}
-	
+
 	@Test
 	public void testIsNotEqualVektoren( ) {
 		// Initializations.
@@ -95,7 +95,7 @@ public class Vektor2DTests {
 		assertFalse( vec1.isNotEqual( vec2 ) );
 		assertTrue( vec1.isNotEqual( vec3 ) );
 	}
-	
+
 	@Test
 	public void testLengthVektoren( ) {
 		// Initializations.
@@ -105,7 +105,7 @@ public class Vektor2DTests {
 		// Tests.
 		assertEquals( erg1, vec1.length( ), 0.001 );
 	}
-	
+
 	@Test
 	public void testNormalizeVektoren( ) {
 		// Initializations.
@@ -114,7 +114,7 @@ public class Vektor2DTests {
 
 		// Methods.
 		vec1.normalize( );
-		
+
 		// Tests.
 		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
 	}
