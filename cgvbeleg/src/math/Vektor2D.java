@@ -86,7 +86,7 @@ public class Vektor2D {
 	}
 	// ********************************************//
 	public double length( ) {
-		return ( Math.abs( this.x ) + Math.abs( this.y ) );
+		return Math.sqrt( ( this.x * this.x ) + ( this.y * this.y ) );
 	}
 	// ********************************************//
 	public void normalize( ) {
