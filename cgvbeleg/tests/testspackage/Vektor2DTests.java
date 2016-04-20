@@ -1,10 +1,23 @@
 package testspackage;
 
-import org.junit.Test;
 import math.Vektor2D;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Vektor2DTests {
+	@Test
+	public void testSetPositionVektoren( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( );
+		Vektor2D erg1 = new Vektor2D( 1.0, 1.0 );
+
+		// Methods.
+		vec1.setPosition( 1.0, 1.0 );
+
+		// Tests.
+		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+	}
+
 	@Test
 	public void testAddVektoren( ) {
 		// Initializations.
