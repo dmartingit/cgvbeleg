@@ -150,4 +150,16 @@ public class Vektor3D {
 	public void normalize( ) {
 		mult( 1 / length( ) );
 	}
+
+	// ********************************************//
+	public double eukldistance( Vektor3D src ) {
+		double dist = 0, diff = 0;
+		diff = this.x - src.x;
+		dist += diff * diff;
+		diff = this.y - src.y;
+		dist += diff * diff;
+		diff = this.z - src.z;
+		dist += diff * diff;
+		return Math.sqrt( dist );
+	}
 }
