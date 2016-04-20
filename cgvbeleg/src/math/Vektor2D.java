@@ -131,12 +131,22 @@ public class Vektor2D {
 	}
 
 	// ********************************************//
-	public double eukldistance( Vektor2D src ) {
+	public double euklDistance( Vektor2D src ) {
 		double dist = 0, diff = 0;
 		diff = this.x - src.x;
 		dist += diff * diff;
 		diff = this.y - src.y;
 		dist += diff * diff;
 		return Math.sqrt( dist );
+	}
+
+	// ********************************************//
+	public double manhattanDistance( Vektor2D src ) {
+		return ( Math.abs( this.x - src.x ) + Math.abs( this.y - src.y ) );
+	}
+
+	// ********************************************//
+	public double dotProduct( Vektor2D src ) {
+		return ( this.x * src.x + this.y * src.y );
 	}
 }

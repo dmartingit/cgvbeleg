@@ -102,16 +102,47 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public Vektor2D eukldistance( Vektor2D vec1 ) {
+	public Vektor2D euklDistance( Vektor2D vec1, Vektor2D vec2 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
-		erg.normalize( );
+		erg.euklDistance( vec2 );
 		return erg;
 	}
 
 	// ********************************************//
-	public Vektor3D eukldistance( Vektor3D vec1 ) {
+	public Vektor3D euklDistance( Vektor3D vec1, Vektor3D vec2 ) {
 		Vektor3D erg = new Vektor3D( vec1 );
-		erg.normalize( );
+		erg.euklDistance( vec2 );
 		return erg;
+	}
+
+	// ********************************************//
+	public Vektor2D manhattanDistance( Vektor2D vec1, Vektor2D vec2 ) {
+		Vektor2D erg = new Vektor2D( vec1 );
+		erg.manhattanDistance( vec2 );
+		return erg;
+	}
+
+	// ********************************************//
+	public Vektor3D manhattanDistance( Vektor3D vec1, Vektor3D vec2 ) {
+		Vektor3D erg = new Vektor3D( vec1 );
+		erg.manhattanDistance( vec2 );
+		return erg;
+	}
+
+	// ********************************************//
+	public Vektor3D crossProduct( Vektor3D vec1, Vektor3D vec2 ) {
+		Vektor3D erg = new Vektor3D( vec1 );
+		erg.crossProduct( vec2 );
+		return erg;
+	}
+
+	// ********************************************//
+	public double dotProduct( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.dotProduct( vec2 );
+	}
+
+	// ********************************************//
+	public double dotProduct( Vektor3D vec1, Vektor3D vec2 ) {
+		return vec1.dotProduct( vec2 );
 	}
 }

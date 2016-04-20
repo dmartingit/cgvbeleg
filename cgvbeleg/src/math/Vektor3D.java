@@ -152,7 +152,7 @@ public class Vektor3D {
 	}
 
 	// ********************************************//
-	public double eukldistance( Vektor3D src ) {
+	public double euklDistance( Vektor3D src ) {
 		double dist = 0, diff = 0;
 		diff = this.x - src.x;
 		dist += diff * diff;
@@ -161,5 +161,22 @@ public class Vektor3D {
 		diff = this.z - src.z;
 		dist += diff * diff;
 		return Math.sqrt( dist );
+	}
+
+	// ********************************************//
+	public double manhattanDistance( Vektor3D src ) {
+		return ( Math.abs( this.x - src.x ) + Math.abs( this.y - src.y ) + Math.abs( this.z - src.z ) );
+	}
+
+	// ********************************************//
+	public void crossProduct( Vektor3D src ) {
+		this.x = ( ( this.y * src.z ) - ( this.z * src.y ) );
+		this.y = ( ( this.z * src.x ) - ( this.x * src.z ) );
+		this.z = ( ( this.x * src.y ) - ( this.y * src.x ) );
+	}
+
+	// ********************************************//
+	public double dotProduct( Vektor3D src ) {
+		return ( this.x * src.x + this.y * src.y + this.z * src.z );
 	}
 }
