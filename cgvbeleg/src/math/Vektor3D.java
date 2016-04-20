@@ -5,9 +5,7 @@ public class Vektor3D {
 
 	// ********************************************//
 	public Vektor3D( ) {
-		this.x = 0;
-		this.y = 0;
-		this.z = 0;
+		this( 0.0, 0.0, 0.0 );
 	}
 
 	// ********************************************//
@@ -43,7 +41,6 @@ public class Vektor3D {
 	// ********************************************//
 	public double getX( ) {
 		return this.x;
-
 	}
 
 	// ********************************************//
@@ -62,10 +59,10 @@ public class Vektor3D {
 	}
 
 	// ********************************************//
-	public double getZ() {
-			return this.z;
+	public double getZ( ) {
+		return this.z;
 	}
-	
+
 	// ********************************************//
 	public void setPosition( double x, double y, double z ) {
 		this.x = x;
@@ -79,34 +76,61 @@ public class Vektor3D {
 		this.y += src.y;
 		this.z += src.z;
 	}
-	
+
+	// ********************************************//
+	public void add( double src ) {
+		this.x += src;
+		this.y += src;
+		this.z += src;
+	}
+
 	// ********************************************//
 	public void sub( Vektor3D src ) {
 		this.x -= src.x;
 		this.y -= src.y;
 		this.z -= src.z;
 	}
-	
+
+	// ********************************************//
+	public void sub( double src ) {
+		this.x -= src;
+		this.y -= src;
+		this.z -= src;
+	}
+
 	// ********************************************//
 	public void mult( Vektor3D src ) {
 		this.x *= src.x;
 		this.y *= src.y;
 		this.z *= src.z;
 	}
-	
+
+	// ********************************************//
+	public void mult( double src ) {
+		this.x *= src;
+		this.y *= src;
+		this.z *= src;
+	}
+
 	// ********************************************//
 	public void div( Vektor3D src ) {
 		this.x /= src.x;
 		this.y /= src.y;
 		this.z /= src.z;
 	}
-	
-	
+
+	// ********************************************//
+	public void div( double src ) {
+		this.x /= src;
+		this.y /= src;
+		this.z /= src;
+	}
+
 	// ********************************************//
 	public boolean isNullVector( ) {
-		return ( this.x == 0 && this.y == 0 && this.z == 0);
+		return ( this.x == 0 && this.y == 0 && this.z == 0 );
 	}
-	
+
 	// ********************************************//
 	public boolean isEqual( Vektor3D src ) {
 		return ( this.x == src.x && this.y == src.y && this.z == src.z );
@@ -116,20 +140,14 @@ public class Vektor3D {
 	public boolean isNotEqual( Vektor3D src ) {
 		return ( this.x != src.x || this.y != src.y || this.z != src.z );
 	}
-	
+
 	// ********************************************//
 	public double length( ) {
-		return Math.sqrt( ( this.x * this.x ) + ( this.y * this.y ) + (this.z * this.z) );
+		return Math.sqrt( ( this.x * this.x ) + ( this.y * this.y ) + ( this.z * this.z ) );
 	}
-	
+
 	// ********************************************//
-	public void normalize(Vektor3D src ) {
-		double leng = 1/src.length( );
-		this.x = this.x/leng;
-		this.y = this.y/leng;
-		this.z = this.z/leng;
-			
+	public void normalize( ) {
+		mult( 1 / length( ) );
 	}
-
-
 }
