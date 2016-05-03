@@ -9,13 +9,13 @@ public class Vektor3DTests {
 	public void testSetPositionVektoren( ) {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( );
-		Vektor3D erg1 = new Vektor3D( 1.0, 1.0, 1.0 );
+		Vektor3D erg = new Vektor3D( 1.0, 1.0, 1.0 );
 
 		// Methods.
 		vec1.setPosition( 1.0, 1.0, 1.0 );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 
 	@Test
@@ -23,13 +23,13 @@ public class Vektor3DTests {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 1.0, 2.0, 3.0 );
 		Vektor3D vec2 = new Vektor3D( 1.0, 1.0, 1.0 );
-		Vektor3D erg1 = new Vektor3D( 2.0, 3.0, 4.0 );
+		Vektor3D erg = new Vektor3D( 2.0, 3.0, 4.0 );
 
 		// Methods.
 		vec1.add( vec2 );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 
 	@Test
@@ -37,13 +37,13 @@ public class Vektor3DTests {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 2.0, 4.0, 6.0 );
 		Vektor3D vec2 = new Vektor3D( 1.0, 2.0, 3.0 );
-		Vektor3D erg1 = new Vektor3D( 1.0, 2.0, 3.0 );
+		Vektor3D erg = new Vektor3D( 1.0, 2.0, 3.0 );
 
 		// Methods.
 		vec1.sub( vec2 );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 
 	@Test
@@ -51,13 +51,13 @@ public class Vektor3DTests {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 1.0, 2.0, 3.0 );
 		Vektor3D vec2 = new Vektor3D( 2.0, 2.0, 2.0 );
-		Vektor3D erg1 = new Vektor3D( 2.0, 4.0, 6.0 );
+		Vektor3D erg = new Vektor3D( 2.0, 4.0, 6.0 );
 
 		// Methods.
 		vec1.mult( vec2 );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 
 	@Test
@@ -65,13 +65,13 @@ public class Vektor3DTests {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 2.0, 2.0, 2.0 );
 		Vektor3D vec2 = new Vektor3D( 2.0, 2.0, 2.0 );
-		Vektor3D erg1 = new Vektor3D( 1.0, 1.0, 1.0 );
+		Vektor3D erg = new Vektor3D( 1.0, 1.0, 1.0 );
 
 		// Methods.
 		vec1.div( vec2 );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 
 	@Test
@@ -113,22 +113,22 @@ public class Vektor3DTests {
 	public void testLengthVektoren( ) {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 1.0, 2.0, 2.0 );
-		double erg1 = 3.0;
+		double erg = 3.0;
 
 		// Tests.
-		assertEquals( erg1, vec1.length( ), 0.001 );
+		assertEquals( erg, vec1.length( ), 0.001 );
 	}
 
 	@Test
 	public void testNormalizeVektoren( ) {
 		// Initializations.
-		Vektor3D vec1 = new Vektor3D( 2.0, 0.0, 0.0 );
-		Vektor3D erg1 = new Vektor3D( 1.0, 0.0, 0.0 );
+		Vektor3D vec1 = new Vektor3D( 4.0, 4.0, 0.0 );
+		Vektor3D erg = new Vektor3D( 0.707, 0.707, 0.0 );
 
 		// Methods.
 		vec1.normalize( );
 
 		// Tests.
-		assertArrayEquals( erg1.getArray( ), vec1.getArray( ), 0.001 );
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
 }

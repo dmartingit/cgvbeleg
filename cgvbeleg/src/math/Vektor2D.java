@@ -58,51 +58,242 @@ public class Vektor2D {
 	}
 
 	// ********************************************//
-	public void add( Vektor2D src ) {
-		this.x += src.x;
-		this.y += src.y;
+	public int checkAdd( double x, double y ) {
+		if ( y > 0.0 ) {
+			// Overflow
+			if ( ( Double.MAX_VALUE - y ) < x ) {
+				return 1;
+			}
+		} else {
+			// Underflow
+			if ( ( -Double.MAX_VALUE - y ) > x ) {
+				return 2;
+			}
+		}
+		return 0;
 	}
 
 	// ********************************************//
-	public void add( double src ) {
-		this.x += src;
-		this.y += src;
+	public void add( Vektor2D src ) {
+		switch ( checkAdd( this.x, src.x ) ) {
+		case 0:
+			// Default
+			this.x += src.x;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.x = -Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkAdd( this.y, src.y ) ) {
+		case 0:
+			// Default
+			this.y += src.y;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.y = -Double.MAX_VALUE;
+			break;
+		}
+	}
+
+	// ********************************************//
+	public int checkSub( double x, double y ) {
+		if ( y > 0.0 ) {
+			// Overflow
+			if ( ( -Double.MAX_VALUE + y ) > x ) {
+				return 1;
+			}
+		} else {
+			// Underflow
+			if ( ( Double.MAX_VALUE + y ) < x ) {
+				return 2;
+			}
+		}
+		return 0;
 	}
 
 	// ********************************************//
 	public void sub( Vektor2D src ) {
-		this.x -= src.x;
-		this.y -= src.y;
+		switch ( checkSub( this.x, src.x ) ) {
+		case 0:
+			// Default
+			this.x -= src.x;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.x = -Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkSub( this.y, src.y ) ) {
+		case 0:
+			// Default
+			this.y -= src.y;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.y = -Double.MAX_VALUE;
+			break;
+		}
 	}
 
 	// ********************************************//
-	public void sub( double src ) {
-		this.x -= src;
-		this.y -= src;
+	public int checkMult( double x, double y ) {
+		if ( y > 0.0 ) {
+			// Overflow
+			if ( ( ( Double.MAX_VALUE / y ) < x ) || ( ( -Double.MAX_VALUE / y ) > x ) )
+				return 1;
+		} else if ( y < -1 ) {
+			// Underflow
+			if ( ( ( -Double.MAX_VALUE / y ) < x ) || ( ( Double.MAX_VALUE / y ) > x ) )
+				return 2;
+		} else if ( ( y == -1.0 ) && ( x == Double.MIN_VALUE ) ) {
+			// MIN_VALUE - Error (handle like Overflow)
+			return 1;
+		}
+		// Default
+		return 0;
 	}
 
 	// ********************************************//
 	public void mult( Vektor2D src ) {
-		this.x *= src.x;
-		this.y *= src.y;
+		switch ( checkMult( this.x, src.x ) ) {
+		case 0:
+			// Default
+			this.x *= src.x;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.x = -Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkMult( this.y, src.y ) ) {
+		case 0:
+			// Default
+			this.y *= src.y;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.y = -Double.MAX_VALUE;
+			break;
+		}
 	}
 
 	// ********************************************//
 	public void mult( double src ) {
-		this.x *= src;
-		this.y *= src;
+		switch ( checkMult( this.x, src ) ) {
+		case 0:
+			// Default
+			this.x *= src;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.x = -Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkMult( this.y, src ) ) {
+		case 0:
+			// Default
+			this.y *= src;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		case 2:
+			// Underflow
+			this.y = -Double.MAX_VALUE;
+			break;
+		}
+	}
+
+	// ********************************************//
+	public int checkDiv( double x, double y ) {
+		if ( ( x == Double.MIN_VALUE ) && ( y == -1.0 ) ) {
+			// MIN_VALUE - Error (handle like Overflow)
+			return 1;
+		}
+		if ( y == 0.0 ) {
+			// Invalid Operation (handle like Overflow)
+			return 1;
+		}
+		return 0;
 	}
 
 	// ********************************************//
 	public void div( Vektor2D src ) {
-		this.x /= src.x;
-		this.y /= src.y;
+		switch ( checkDiv( this.x, src.x ) ) {
+		case 0:
+			// Default
+			this.x /= src.x;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkDiv( this.y, src.y ) ) {
+		case 0:
+			// Default
+			this.y /= src.y;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		}
 	}
 
 	// ********************************************//
 	public void div( double src ) {
-		this.x /= src;
-		this.y /= src;
+		switch ( checkDiv( this.x, src ) ) {
+		case 0:
+			// Default
+			this.x /= src;
+			break;
+		case 1:
+			// Overflow
+			this.x = Double.MAX_VALUE;
+			break;
+		}
+		switch ( checkDiv( this.y, src ) ) {
+		case 0:
+			// Default
+			this.y /= src;
+			break;
+		case 1:
+			// Overflow
+			this.y = Double.MAX_VALUE;
+			break;
+		}
 	}
 
 	// ********************************************//
@@ -117,7 +308,7 @@ public class Vektor2D {
 
 	// ********************************************//
 	public boolean isNotEqual( Vektor2D src ) {
-		return ( this.x != src.x || this.y != src.y );
+		return !this.isEqual( src );
 	}
 
 	// ********************************************//
@@ -127,7 +318,12 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void normalize( ) {
-		mult( 1 / this.length( ) );
+		if ( this.length( ) == 0.0 ) {
+			this.x = 0;
+			this.y = 0;
+		} else {
+			mult( 1 / this.length( ) );
+		}
 	}
 
 	// ********************************************//
