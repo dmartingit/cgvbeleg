@@ -127,7 +127,7 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void normalize( ) {
-		mult( 1 / length( ) );
+		mult( 1 / this.length( ) );
 	}
 
 	// ********************************************//
@@ -148,5 +148,25 @@ public class Vektor2D {
 	// ********************************************//
 	public double dotProduct( Vektor2D src ) {
 		return ( this.x * src.x + this.y * src.y );
+	}
+
+	// ********************************************//
+	public double determinante( Vektor2D src ) {
+		return ( ( this.x * src.y ) - ( src.x - this.y ) );
+	}
+
+	// ********************************************//
+	public double cosEquation( Vektor2D src ) {
+		return ( Math.acos( dotProduct( src ) / src.length( ) * this.length( ) ) );
+	}
+
+	// ********************************************//
+	public double sinEquation( Vektor2D src ) {
+		return ( Math.asin( determinante( src ) / src.length( ) * this.length( ) ) );
+	}
+
+	// ********************************************//
+	public double abs( Vektor2D src ) {
+		return ( Math.abs( src.x ) + Math.abs( src.y ) );
 	}
 }

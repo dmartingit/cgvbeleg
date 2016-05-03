@@ -179,4 +179,9 @@ public class Vektor3D {
 	public double dotProduct( Vektor3D src ) {
 		return ( this.x * src.x + this.y * src.y + this.z * src.z );
 	}
+
+	// ********************************************//
+	public double abs( Vektor3D src ) {
+		return ( Math.abs( src.x ) + Math.abs( src.y ) + Math.abs( src.z ) );
+	}
 }

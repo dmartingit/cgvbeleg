@@ -145,4 +145,38 @@ public class LineareAlgebra {
 	public double dotProduct( Vektor3D vec1, Vektor3D vec2 ) {
 		return vec1.dotProduct( vec2 );
 	}
+
+	// ********************************************//
+	public double abs( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.abs( vec2 );
+	}
+
+	// ********************************************//
+	public double abs( Vektor3D vec1, Vektor3D vec2 ) {
+		return vec1.abs( vec2 );
+	}
+
+	public double determinante( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.determinante( vec2 );
+	}
+
+	// ********************************************//
+	public double cosEquation( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.cosEquation( vec2 );
+	}
+
+	// ********************************************//
+	public double sinEquation( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.sinEquation( vec2 );
+	}
+
+	// ********************************************//
+	public double angleRad( double deg ) {
+		return ( ( ( 2 * Math.PI ) / 360 ) * deg );
+	}
+
+	// ********************************************//
+	public double angleDegree( double rad ) {
+		return ( ( 360 / ( 2 * Math.PI ) ) * rad );
+	}
 }
