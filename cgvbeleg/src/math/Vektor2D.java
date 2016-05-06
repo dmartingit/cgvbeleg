@@ -172,38 +172,6 @@ public class Vektor2D {
 	}
 
 	// ********************************************//
-	public void mult( Vektor2D src ) {
-		switch ( checkMult( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x *= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y *= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
-	}
-
-	// ********************************************//
 	public void mult( double src ) {
 		switch ( checkMult( this.x, src ) ) {
 		case 0:
@@ -243,33 +211,9 @@ public class Vektor2D {
 		}
 		if ( y == 0.0 ) {
 			// Invalid Operation (handle like Overflow)
-			return 1;
+			return 2;
 		}
 		return 0;
-	}
-
-	// ********************************************//
-	public void div( Vektor2D src ) {
-		switch ( checkDiv( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x /= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y /= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		}
 	}
 
 	// ********************************************//
@@ -279,7 +223,11 @@ public class Vektor2D {
 			// Default
 			this.x /= src;
 			break;
-		case 1:
+		case 1: 
+			//Underflow
+			this.x = Double.MIN_VALUE; 
+			break; 
+		case 2:
 			// Overflow
 			this.x = Double.MAX_VALUE;
 			break;
