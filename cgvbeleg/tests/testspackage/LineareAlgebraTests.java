@@ -70,7 +70,7 @@ public class LineareAlgebraTests extends LineareAlgebra {
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
 
-	@Test
+	/*@Test
 	public void testVektor2DMult( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 3.0, 2.0 );
@@ -84,7 +84,7 @@ public class LineareAlgebraTests extends LineareAlgebra {
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
-
+*/
 	@Test
 	public void testVektor3DMult( ) {
 		// Initializations.
@@ -100,7 +100,7 @@ public class LineareAlgebraTests extends LineareAlgebra {
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
 
-	@Test
+	/*@Test
 	public void testVektor2DDiv( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 12.0, 20.0 );
@@ -113,7 +113,7 @@ public class LineareAlgebraTests extends LineareAlgebra {
 		
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
-	}
+	}*/
 
 	@Test
 	public void testVektor3DDiv( ) {

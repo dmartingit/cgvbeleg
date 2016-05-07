@@ -34,11 +34,11 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public static Vektor2D mult( Vektor2D vec1, Vektor2D vec2 ) {
+	/*public static Vektor2D mult( Vektor2D vec1, Vektor2D vec2 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.mult( vec2 );
 		return erg;
-	}
+	}*/
 
 	// ********************************************//
 	public static Vektor2D mult( Vektor2D vec1, double val1 ) {
@@ -76,11 +76,11 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public static Vektor2D div( Vektor2D vec1, Vektor2D vec2 ) {
+	/*public static Vektor2D div( Vektor2D vec1, Vektor2D vec2 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.div( vec2 );
 		return erg;
-	}
+	}*/
 
 	// ********************************************//
 	public static Vektor2D div( Vektor2D vec1, double val1 ) {
