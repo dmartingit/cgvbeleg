@@ -159,4 +159,34 @@ public class Vektor2DTests {
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
+	
+	@Test
+	public void testEuklDistance( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( 1.0, 2.0 );
+		Vektor2D vec2 = new Vektor2D( 1.0, 4.0 );
+		double erg = 2.0;
+		
+		// Methods.
+		double terg = vec1.euklDistance(vec2 ); 
+		
+		
+		// Tests.
+		assertEquals( erg, terg, 0.001 );
+	}
+	
+	@Test
+	public void testcoseq( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( 4.0, 2.0 );
+		Vektor2D vec2 = new Vektor2D( 1.0, 8.0 );
+		double erg = 0.982793723247329;
+		
+		// Methods.
+		double terg = vec1.cosEquation( vec2 ); 
+		System.out.println( terg );
+		
+		// Tests.
+		assertEquals( erg, terg, 0.001 );
+	}
 }

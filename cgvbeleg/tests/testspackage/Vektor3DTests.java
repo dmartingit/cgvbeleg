@@ -47,34 +47,6 @@ public class Vektor3DTests {
 	}
 
 	@Test
-	public void testMultVektoren( ) {
-		// Initializations.
-		Vektor3D vec1 = new Vektor3D( 1.0, 2.0, 3.0 );
-		Vektor3D vec2 = new Vektor3D( 2.0, 2.0, 2.0 );
-		Vektor3D erg = new Vektor3D( 2.0, 4.0, 6.0 );
-
-		// Methods.
-		vec1.mult( vec2 );
-
-		// Tests.
-		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
-	}
-
-	@Test
-	public void testDivVektoren( ) {
-		// Initializations.
-		Vektor3D vec1 = new Vektor3D( 2.0, 2.0, 2.0 );
-		Vektor3D vec2 = new Vektor3D( 2.0, 2.0, 2.0 );
-		Vektor3D erg = new Vektor3D( 1.0, 1.0, 1.0 );
-
-		// Methods.
-		vec1.div( vec2 );
-
-		// Tests.
-		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
-	}
-
-	@Test
 	public void testIsNullVektoren( ) {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 0.0, 0.0, 0.0 );
