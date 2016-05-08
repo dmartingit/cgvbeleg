@@ -1,7 +1,7 @@
 package math;
 
 public class Vektor2D {
-	private double x, y;
+	public double x, y;
 
 	// ********************************************//
 	public Vektor2D( ) {
@@ -58,242 +58,90 @@ public class Vektor2D {
 	}
 
 	// ********************************************//
-	public int checkAdd( double x, double y ) {
+	public double checkAdd( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( Double.MAX_VALUE - y ) < x ) {
-				return 1;
+				return Double.MAX_VALUE;
 			}
 		} else {
 			// Underflow
 			if ( ( -Double.MAX_VALUE - y ) > x ) {
-				return 2;
+				return ( -Double.MAX_VALUE );
 			}
 		}
-		return 0;
+		return x + y;
 	}
 
 	// ********************************************//
 	public void add( Vektor2D src ) {
-		switch ( checkAdd( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x += src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkAdd( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y += src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkAdd( this.x, src.x );
+		this.y = checkAdd( this.y, src.y );
 	}
 
 	// ********************************************//
-	public int checkSub( double x, double y ) {
+	public double checkSub( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( -Double.MAX_VALUE + y ) > x ) {
-				return 1;
+				return Double.MAX_VALUE;
 			}
 		} else {
 			// Underflow
 			if ( ( Double.MAX_VALUE + y ) < x ) {
-				return 2;
+				return Double.MIN_VALUE;
 			}
 		}
-		return 0;
+		return x - y;
 	}
 
 	// ********************************************//
 	public void sub( Vektor2D src ) {
-		switch ( checkSub( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x -= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkSub( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y -= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkSub( this.x, src.x );
+		this.y = checkSub( this.y, src.y );
 	}
 
 	// ********************************************//
-	public int checkMult( double x, double y ) {
+	public double checkMult( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( ( Double.MAX_VALUE / y ) < x ) || ( ( -Double.MAX_VALUE / y ) > x ) )
-				return 1;
+				return Double.MAX_VALUE;
 		} else if ( y < -1 ) {
 			// Underflow
 			if ( ( ( -Double.MAX_VALUE / y ) < x ) || ( ( Double.MAX_VALUE / y ) > x ) )
-				return 2;
+				return Double.MIN_VALUE;
 		} else if ( ( y == -1.0 ) && ( x == Double.MIN_VALUE ) ) {
 			// MIN_VALUE - Error (handle like Overflow)
-			return 1;
+			return Double.MAX_VALUE;
 		}
 		// Default
-		return 0;
-	}
-
-	// ********************************************//
-	public void mult( Vektor2D src ) {
-		switch ( checkMult( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x *= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y *= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
+		return x * y;
 	}
 
 	// ********************************************//
 	public void mult( double src ) {
-		switch ( checkMult( this.x, src ) ) {
-		case 0:
-			// Default
-			this.x *= src;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.y, src ) ) {
-		case 0:
-			// Default
-			this.y *= src;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkMult( this.x, src );
+		this.y = checkMult( this.y, src );
 	}
 
 	// ********************************************//
-	public int checkDiv( double x, double y ) {
+	public double checkDiv( double x, double y ) {
 		if ( ( x == Double.MIN_VALUE ) && ( y == -1.0 ) ) {
 			// MIN_VALUE - Error (handle like Overflow)
-			return 1;
+			return 0.0;
 		}
 		if ( y == 0.0 ) {
 			// Invalid Operation (handle like Overflow)
-			return 1;
+			return Double.MAX_VALUE;
 		}
-		return 0;
-	}
-
-	// ********************************************//
-	public void div( Vektor2D src ) {
-		switch ( checkDiv( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x /= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y /= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		}
+		return x / y;
 	}
 
 	// ********************************************//
 	public void div( double src ) {
-		switch ( checkDiv( this.x, src ) ) {
-		case 0:
-			// Default
-			this.x /= src;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.y, src ) ) {
-		case 0:
-			// Default
-			this.y /= src;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkDiv( this.x, src );
+		this.y = checkDiv( this.y, src );
 	}
 
 	// ********************************************//
@@ -318,7 +166,7 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void normalize( ) {
-		if ( this.length( ) == 0.0 ) {
+		if ( isNullVector( ) ) {
 			this.x = 0;
 			this.y = 0;
 		} else {
@@ -353,11 +201,17 @@ public class Vektor2D {
 
 	// ********************************************//
 	public double cosEquation( Vektor2D src ) {
-		return ( Math.acos( dotProduct( src ) / src.length( ) * this.length( ) ) );
+		if ( src.length( ) == 0 || this.length( ) == 0 ) {
+			return 0.0;
+		}
+		return ( Math.acos( dotProduct( src ) / ( src.length( ) * this.length( ) ) ) );
 	}
 
 	// ********************************************//
 	public double sinEquation( Vektor2D src ) {
+		if ( src.length( ) == 0 || this.length( ) == 0 ) {
+			return 0.0;
+		}
 		return ( Math.asin( determinante( src ) / src.length( ) * this.length( ) ) );
 	}
 

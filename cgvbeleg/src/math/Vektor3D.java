@@ -1,7 +1,7 @@
 package math;
 
 public class Vektor3D {
-	private double x, y, z;
+	public double x, y, z;
 
 	// ********************************************//
 	public Vektor3D( ) {
@@ -71,318 +71,94 @@ public class Vektor3D {
 	}
 
 	// ********************************************//
-	public int checkAdd( double x, double y ) {
+	public double checkAdd( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( Double.MAX_VALUE - y ) < x ) {
-				return 1;
+				return Double.MAX_VALUE;
 			}
 		} else {
 			// Underflow
 			if ( ( -Double.MAX_VALUE - y ) > x ) {
-				return 2;
+				return ( -Double.MAX_VALUE );
 			}
 		}
-		return 0;
+		return x + y;
 	}
 
 	// ********************************************//
 	public void add( Vektor3D src ) {
-		switch ( checkAdd( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x += src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkAdd( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y += src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkAdd( this.z, src.z ) ) {
-		case 0:
-			// Default
-			this.z += src.z;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.z = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkAdd( this.x, src.x );
+		this.y = checkAdd( this.y, src.y );
+		this.z = checkAdd( this.z, src.z );
 	}
 
 	// ********************************************//
-	public int checkSub( double x, double y ) {
+	public double checkSub( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( -Double.MAX_VALUE + y ) > x ) {
-				return 1;
+				return Double.MAX_VALUE;
 			}
 		} else {
 			// Underflow
 			if ( ( Double.MAX_VALUE + y ) < x ) {
-				return 2;
+				return Double.MIN_VALUE;
 			}
 		}
-		return 0;
+		return x - y;
 	}
 
 	// ********************************************//
 	public void sub( Vektor3D src ) {
-		switch ( checkSub( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x -= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkSub( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y -= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkSub( this.z, src.z ) ) {
-		case 0:
-			// Default
-			this.z -= src.z;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.z = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkSub( this.x, src.x );
+		this.y = checkSub( this.y, src.y );
+		this.z = checkSub( this.z, src.z );
 	}
 
 	// ********************************************//
-	public int checkMult( double x, double y ) {
+	public double checkMult( double x, double y ) {
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( ( Double.MAX_VALUE / y ) < x ) || ( ( -Double.MAX_VALUE / y ) > x ) )
-				return 1;
-		} else if ( y < -1.0 ) {
+				return Double.MAX_VALUE;
+		} else if ( y < -1 ) {
 			// Underflow
 			if ( ( ( -Double.MAX_VALUE / y ) < x ) || ( ( Double.MAX_VALUE / y ) > x ) )
-				return 2;
+				return Double.MIN_VALUE;
 		} else if ( ( y == -1.0 ) && ( x == Double.MIN_VALUE ) ) {
 			// MIN_VALUE - Error (handle like Overflow)
-			return 1;
+			return Double.MAX_VALUE;
 		}
 		// Default
-		return 0;
-	}
-
-	// ********************************************//
-	public void mult( Vektor3D src ) {
-		switch ( checkMult( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x *= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y *= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.z, src.z ) ) {
-		case 0:
-			// Default
-			this.z *= src.z;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.z = -Double.MAX_VALUE;
-			break;
-		}
+		return x * y;
 	}
 
 	// ********************************************//
 	public void mult( double src ) {
-		switch ( checkMult( this.x, src ) ) {
-		case 0:
-			// Default
-			this.x *= src;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.x = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.y, src ) ) {
-		case 0:
-			// Default
-			this.y *= src;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.y = -Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkMult( this.z, src ) ) {
-		case 0:
-			// Default
-			this.z *= src;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		case 2:
-			// Underflow
-			this.z = -Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkMult( this.x, src );
+		this.y = checkMult( this.y, src );
+		this.z = checkMult( this.z, src );
 	}
 
 	// ********************************************//
-	public int checkDiv( double x, double y ) {
+	public double checkDiv( double x, double y ) {
 		if ( ( x == Double.MIN_VALUE ) && ( y == -1.0 ) ) {
 			// MIN_VALUE - Error (handle like Overflow)
-			return 1;
+			return 0.0;
 		}
 		if ( y == 0.0 ) {
 			// Invalid Operation (handle like Overflow)
-			return 1;
+			return Double.MAX_VALUE;
 		}
-		return 0;
-	}
-
-	// ********************************************//
-	public void div( Vektor3D src ) {
-		switch ( checkDiv( this.x, src.x ) ) {
-		case 0:
-			// Default
-			this.x /= src.x;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.y, src.y ) ) {
-		case 0:
-			// Default
-			this.y /= src.y;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.z, src.z ) ) {
-		case 0:
-			// Default
-			this.z /= src.z;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		}
+		return x / y;
 	}
 
 	// ********************************************//
 	public void div( double src ) {
-		switch ( checkDiv( this.x, src ) ) {
-		case 0:
-			// Default
-			this.x /= src;
-			break;
-		case 1:
-			// Overflow
-			this.x = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.y, src ) ) {
-		case 0:
-			// Default
-			this.y /= src;
-			break;
-		case 1:
-			// Overflow
-			this.y = Double.MAX_VALUE;
-			break;
-		}
-		switch ( checkDiv( this.z, src ) ) {
-		case 0:
-			// Default
-			this.z /= src;
-			break;
-		case 1:
-			// Overflow
-			this.z = Double.MAX_VALUE;
-			break;
-		}
+		this.x = checkDiv( this.x, src );
+		this.y = checkDiv( this.y, src );
+		this.z = checkDiv( this.z, src );
 	}
 
 	// ********************************************//
@@ -433,10 +209,28 @@ public class Vektor3D {
 		return ( Math.abs( this.x - src.x ) + Math.abs( this.y - src.y ) + Math.abs( this.z - src.z ) );
 	}
 
+	public double cCrPr( double x, double y ) {
+		if ( y > 0.0 ) {
+			// Overflow
+			if ( ( ( Double.MAX_VALUE / y ) < x ) || ( ( -Double.MAX_VALUE / y ) > x ) )
+				return Double.MAX_VALUE;
+		} else if ( y < -1.0 ) {
+			// Underflow
+			if ( ( ( -Double.MAX_VALUE / y ) < x ) || ( ( Double.MAX_VALUE / y ) > x ) )
+				return ( -Double.MAX_VALUE );
+		} else if ( ( y == -1.0 ) && ( x == Double.MIN_VALUE ) ) {
+			// MIN_VALUE - Error (handle like Overflow)
+			return Double.MAX_VALUE;
+		}
+		// Default
+		return x * y;
+	}
+
 	// ********************************************//
 	public void crossProduct( Vektor3D src ) {
-		Vektor3D erg = new Vektor3D( ( ( this.y * src.z ) - ( this.z * src.y ) ),
-				( ( this.z * src.x ) - ( this.x * src.z ) ), ( ( this.x * src.y ) - ( this.y * src.x ) ) );
+		Vektor3D erg = new Vektor3D( ( ( cCrPr( this.y, src.z ) ) - ( cCrPr( this.z, src.y ) ) ),
+				( ( cCrPr( this.z, src.x ) ) - ( cCrPr( this.x, src.z ) ) ),
+				( cCrPr( this.x, src.y ) ) - ( cCrPr( this.y, src.x ) ) );
 		this.x = erg.x;
 		this.y = erg.y;
 		this.z = erg.z;
@@ -450,5 +244,10 @@ public class Vektor3D {
 	// ********************************************//
 	public double abs( Vektor3D src ) {
 		return ( Math.abs( src.x ) + Math.abs( src.y ) + Math.abs( src.z ) );
+	}
+
+	// ********************************************//
+	public double cosEquation( Vektor3D src ) {
+		return ( Math.acos( this.dotProduct( src ) / ( src.length( ) * this.length( ) ) ) );
 	}
 }

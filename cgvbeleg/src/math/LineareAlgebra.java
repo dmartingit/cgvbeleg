@@ -2,7 +2,7 @@ package math;
 
 public class LineareAlgebra {
 	// ********************************************//
-	public LineareAlgebra( ) {
+	private LineareAlgebra( ) {
 	}
 
 	// ********************************************//
@@ -34,13 +34,6 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public static Vektor2D mult( Vektor2D vec1, Vektor2D vec2 ) {
-		Vektor2D erg = new Vektor2D( vec1 );
-		erg.mult( vec2 );
-		return erg;
-	}
-
-	// ********************************************//
 	public static Vektor2D mult( Vektor2D vec1, double val1 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.mult( val1 );
@@ -51,13 +44,6 @@ public class LineareAlgebra {
 	public static Vektor2D mult( double val1, Vektor2D vec1 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.mult( val1 );
-		return erg;
-	}
-
-	// ********************************************//
-	public static Vektor3D mult( Vektor3D vec1, Vektor3D vec2 ) {
-		Vektor3D erg = new Vektor3D( vec1 );
-		erg.mult( vec2 );
 		return erg;
 	}
 
@@ -76,13 +62,6 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public static Vektor2D div( Vektor2D vec1, Vektor2D vec2 ) {
-		Vektor2D erg = new Vektor2D( vec1 );
-		erg.div( vec2 );
-		return erg;
-	}
-
-	// ********************************************//
 	public static Vektor2D div( Vektor2D vec1, double val1 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.div( val1 );
@@ -93,13 +72,6 @@ public class LineareAlgebra {
 	public static Vektor2D div( double val1, Vektor2D vec1 ) {
 		Vektor2D erg = new Vektor2D( vec1 );
 		erg.div( val1 );
-		return erg;
-	}
-
-	// ********************************************//
-	public static Vektor3D div( Vektor3D vec1, Vektor3D vec2 ) {
-		Vektor3D erg = new Vektor3D( vec1 );
-		erg.div( vec2 );
 		return erg;
 	}
 
@@ -162,16 +134,16 @@ public class LineareAlgebra {
 	}
 
 	// ********************************************//
-	public static Vektor2D euklDistance( Vektor2D vec1, Vektor2D vec2 ) {
-		Vektor2D erg = new Vektor2D( vec1 );
-		erg.euklDistance( vec2 );
+	public static double euklDistance( Vektor2D vec1, Vektor2D vec2 ) {
+		Vektor2D ergv = new Vektor2D( vec1 );
+		double erg = ergv.euklDistance( vec2 );
 		return erg;
 	}
 
 	// ********************************************//
-	public static Vektor3D euklDistance( Vektor3D vec1, Vektor3D vec2 ) {
-		Vektor3D erg = new Vektor3D( vec1 );
-		erg.euklDistance( vec2 );
+	public static double euklDistance( Vektor3D vec1, Vektor3D vec2 ) {
+		Vektor3D ergv = new Vektor3D( vec1 );
+		double erg = ergv.euklDistance( vec2 );
 		return erg;
 	}
 
@@ -222,6 +194,11 @@ public class LineareAlgebra {
 
 	// ********************************************//
 	public static double cosEquation( Vektor2D vec1, Vektor2D vec2 ) {
+		return vec1.cosEquation( vec2 );
+	}
+
+	// ********************************************//
+	public static double cosEquation( Vektor3D vec1, Vektor3D vec2 ) {
 		return vec1.cosEquation( vec2 );
 	}
 

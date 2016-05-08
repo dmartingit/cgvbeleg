@@ -33,6 +33,34 @@ public class Vektor2DTests {
 	}
 
 	@Test
+	public void testAddVektorenOverflow( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( Double.MAX_VALUE, 2.0 );
+		Vektor2D vec2 = new Vektor2D( 10, 2.0 );
+		Vektor2D erg = new Vektor2D( Double.MAX_VALUE, 4.0 );
+
+		// Methods.
+		vec1.add( vec2 );
+
+		// Tests.
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
+	}
+
+	@Test
+	public void testAddVektorenUnderflow( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( ( -Double.MAX_VALUE ), 2.0 );
+		Vektor2D vec2 = new Vektor2D( 10, 2.0 );
+		Vektor2D erg = new Vektor2D( ( -Double.MAX_VALUE ), 4.0 );
+
+		// Methods.
+		vec1.add( vec2 );
+
+		// Tests.
+		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
+	}
+
+	@Test
 	public void testSubVektoren( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 3.0, 4.0 );
@@ -50,11 +78,11 @@ public class Vektor2DTests {
 	public void testMultVektoren( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 1.0, 2.0 );
-		Vektor2D vec2 = new Vektor2D( 2.0, 2.0 );
-		Vektor2D erg = new Vektor2D( 2.0, 4.0 );
+		double val1 = 5.0;
+		Vektor2D erg = new Vektor2D( 5.0, 10.0 );
 
 		// Methods.
-		vec1.mult( vec2 );
+		vec1.mult( val1 );
 
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
@@ -64,11 +92,11 @@ public class Vektor2DTests {
 	public void testDivVektoren( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 2.0, 2.0 );
-		Vektor2D vec2 = new Vektor2D( 2.0, 2.0 );
+		double val1 = 2.0;
 		Vektor2D erg = new Vektor2D( 1.0, 1.0 );
 
 		// Methods.
-		vec1.div( vec2 );
+		vec1.div( val1 );
 
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
@@ -130,5 +158,34 @@ public class Vektor2DTests {
 
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
+	}
+
+	@Test
+	public void testEuklDistance( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( 1.0, 2.0 );
+		Vektor2D vec2 = new Vektor2D( 1.0, 4.0 );
+		double erg = 2.0;
+
+		// Methods.
+		double terg = vec1.euklDistance( vec2 );
+
+		// Tests.
+		assertEquals( erg, terg, 0.001 );
+	}
+
+	@Test
+	public void testcoseq( ) {
+		// Initializations.
+		Vektor2D vec1 = new Vektor2D( 4.0, 2.0 );
+		Vektor2D vec2 = new Vektor2D( 1.0, 8.0 );
+		double erg = 0.982793723247329;
+
+		// Methods.
+		double terg = vec1.cosEquation( vec2 );
+		System.out.println( terg );
+
+		// Tests.
+		assertEquals( erg, terg, 0.001 );
 	}
 }
