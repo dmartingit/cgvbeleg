@@ -150,6 +150,7 @@ public class Vektor3D {
 		if ( y == 0.0 ) {
 			// Invalid Operation (handle like Overflow)
 			return Double.MAX_VALUE;
+<<<<<<< HEAD
 		}
 		return x / y;
 	}
@@ -160,6 +161,18 @@ public class Vektor3D {
 		this.y = checkDiv( this.y, src );
 		this.z = checkDiv( this.z, src );
 	}
+=======
+		}
+		return x / y;
+	}
+	
+	// ********************************************//
+		public void div( double src ) {
+			this.x=checkDiv(this.x, src);
+			this.y=checkDiv(this.y, src);
+			this.z=checkDiv(this.z, src);
+		}
+>>>>>>> origin/master
 
 	// ********************************************//
 	public boolean isNullVector( ) {
