@@ -9,11 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-<<<<<<< HEAD
 public class LineareAlgebraTests {
-=======
-public class LineareAlgebraTests  {
->>>>>>> origin/master
 	@Test
 	public void testVektor2DAdd( ) {
 		// Initializations.
@@ -24,11 +20,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.add( vec1, vec2 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -43,11 +35,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.add( vec1, vec2 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -62,11 +50,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.sub( vec2, vec1 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -78,7 +62,6 @@ public class LineareAlgebraTests  {
 		Vektor3D vec2 = new Vektor3D( 1.0, 1.0, 1.0 );
 		Vektor3D erg = new Vektor3D( 2.0, 1.0, 49.0 );
 		Vektor3D terg = new Vektor3D( );
-<<<<<<< HEAD
 
 		// Methods.
 		terg = LineareAlgebra.sub( vec1, vec2 );
@@ -86,16 +69,6 @@ public class LineareAlgebraTests  {
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
-=======
-		
-		// Methods.
-		terg = LineareAlgebra.sub( vec1, vec2 );
-		
-		// Tests.
-		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
-	}
-
->>>>>>> origin/master
 
 	@Test
 	public void testIsEqual2DVektoren( ) {
@@ -193,7 +166,6 @@ public class LineareAlgebraTests  {
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
 
-<<<<<<< HEAD
 	@Test
 	public void testEuklDistance2DVektoren( ) {
 		// Initializations.
@@ -206,20 +178,6 @@ public class LineareAlgebraTests  {
 		System.out.println( terg );
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
-=======
-	@Test 	
-	public void testEuklDistance2DVektoren( ) { 		
-		// Initializations. 		
-		Vektor2D vec1 = new Vektor2D( 1.0, 2.0 ); 		
-		Vektor2D vec2 = new Vektor2D( 1.0, 4.0 ); 	
-		double erg = 2.0;	
-	 	
-		// Methods. 		
-		double terg = LineareAlgebra.euklDistance( vec1, vec2 ); 
-		System.out.println( terg );
-		// Tests. 		
-		assertEquals( erg, terg, 0.001 ); 	
->>>>>>> origin/master
 	}
 
 	@Test
@@ -227,18 +185,10 @@ public class LineareAlgebraTests  {
 		// Initializations.
 		Vektor3D vec1 = new Vektor3D( 1.0, 4.0, 8.0 );
 		Vektor3D vec2 = new Vektor3D( 1.0, 10.0, 8.0 );
-<<<<<<< HEAD
 		double erg = 6.0;
 
 		// Methods.
 		double terg = LineareAlgebra.euklDistance( vec1, vec2 );
-=======
-		double erg =6.0;
-		
-		
-		// Methods.
-		double terg = LineareAlgebra.euklDistance( vec1, vec2 ); 
->>>>>>> origin/master
 		System.out.println( terg );
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
@@ -253,14 +203,9 @@ public class LineareAlgebraTests  {
 		Vektor2D terg = new Vektor2D( );
 
 		// Methods.
-<<<<<<< HEAD
 		terg = LineareAlgebra.manhattanDistance( vec1, vec2 ); // falsches
 																// ergebnis
 
-=======
-		terg = LineareAlgebra.manhattanDistance( vec1, vec2 ); // falsches ergebnis
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -274,14 +219,9 @@ public class LineareAlgebraTests  {
 		Vektor3D terg = new Vektor3D( );
 
 		// Methods.
-<<<<<<< HEAD
 		terg = LineareAlgebra.manhattanDistance( vec1, vec2 ); // falsches
 																// ergebnis
 
-=======
-		terg = LineareAlgebra.manhattanDistance( vec1, vec2 ); // falsches ergebnis
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -296,11 +236,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.crossProduct( vec1, vec2 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertArrayEquals( erg.getArray( ), terg.getArray( ), 0.001 );
 	}
@@ -315,11 +251,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.dotProduct( vec1, vec2 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
 	}
@@ -334,11 +266,7 @@ public class LineareAlgebraTests  {
 
 		// Methods.
 		terg = LineareAlgebra.dotProduct( vec1, vec2 );
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> origin/master
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
 	}

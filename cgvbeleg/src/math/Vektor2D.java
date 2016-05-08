@@ -1,7 +1,7 @@
 package math;
 
 public class Vektor2D {
-	public double x, y;
+	private double x, y;
 
 	// ********************************************//
 	public Vektor2D( ) {
@@ -57,13 +57,8 @@ public class Vektor2D {
 		this.y = y;
 	}
 
-<<<<<<< HEAD
 	// ********************************************//
 	public double checkAdd( double x, double y ) {
-=======
-	// ********************************************//	
-	public double checkAdd(double x, double y) {
->>>>>>> origin/master
 		if ( y > 0.0 ) {
 			// Overflow
 			if ( ( Double.MAX_VALUE - y ) < x ) {
@@ -72,11 +67,7 @@ public class Vektor2D {
 		} else {
 			// Underflow
 			if ( ( -Double.MAX_VALUE - y ) > x ) {
-<<<<<<< HEAD
 				return ( -Double.MAX_VALUE );
-=======
-				return (-Double.MAX_VALUE);
->>>>>>> origin/master
 			}
 		}
 		return x + y;
@@ -84,13 +75,8 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void add( Vektor2D src ) {
-<<<<<<< HEAD
 		this.x = checkAdd( this.x, src.x );
 		this.y = checkAdd( this.y, src.y );
-=======
-		this.x = checkAdd(this.x, src.x);
-		this.y = checkAdd(this.y, src.y); 
->>>>>>> origin/master
 	}
 
 	// ********************************************//
@@ -111,13 +97,8 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void sub( Vektor2D src ) {
-<<<<<<< HEAD
 		this.x = checkSub( this.x, src.x );
 		this.y = checkSub( this.y, src.y );
-=======
-		this.x = checkSub(this.x, src.x);
-		this.y = checkSub(this.y, src.y); 
->>>>>>> origin/master
 	}
 
 	// ********************************************//
@@ -140,13 +121,8 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void mult( double src ) {
-<<<<<<< HEAD
 		this.x = checkMult( this.x, src );
 		this.y = checkMult( this.y, src );
-=======
-		this.x = checkMult( this.x, src);
-		this.y = checkMult( this.y, src);
->>>>>>> origin/master
 	}
 
 	// ********************************************//
@@ -164,13 +140,8 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void div( double src ) {
-<<<<<<< HEAD
 		this.x = checkDiv( this.x, src );
 		this.y = checkDiv( this.y, src );
-=======
-		this.x=checkDiv(this.x, src);
-		this.y=checkDiv(this.y, src);
->>>>>>> origin/master
 	}
 
 	// ********************************************//
@@ -195,11 +166,7 @@ public class Vektor2D {
 
 	// ********************************************//
 	public void normalize( ) {
-<<<<<<< HEAD
 		if ( isNullVector( ) ) {
-=======
-		if ( isNullVector()) {
->>>>>>> origin/master
 			this.x = 0;
 			this.y = 0;
 		} else {
@@ -234,26 +201,15 @@ public class Vektor2D {
 
 	// ********************************************//
 	public double cosEquation( Vektor2D src ) {
-<<<<<<< HEAD
 		if ( src.length( ) == 0 || this.length( ) == 0 ) {
 			return 0.0;
 		}
 		return ( Math.acos( dotProduct( src ) / ( src.length( ) * this.length( ) ) ) );
-=======
-		if(src.length( ) == 0 ||  this.length( ) == 0) {
-			return 0.0;
-		}
-		return ( Math.acos( dotProduct( src ) / (src.length( ) * this.length( ) ) ) );
->>>>>>> origin/master
 	}
 
 	// ********************************************//
 	public double sinEquation( Vektor2D src ) {
-<<<<<<< HEAD
 		if ( src.length( ) == 0 || this.length( ) == 0 ) {
-=======
-		if(src.length( ) == 0 ||  this.length( ) == 0) {
->>>>>>> origin/master
 			return 0.0;
 		}
 		return ( Math.asin( determinante( src ) / src.length( ) * this.length( ) ) );

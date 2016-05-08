@@ -31,34 +31,6 @@ public class Vektor2DTests {
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
-	
-	@Test
-	public void testAddVektorenOverflow( ) {
-		// Initializations.
-		Vektor2D vec1 = new Vektor2D( Double.MAX_VALUE, 2.0 );
-		Vektor2D vec2 = new Vektor2D( 10, 2.0 );
-		Vektor2D erg = new Vektor2D( Double.MAX_VALUE, 4.0 );
-
-		// Methods.
-		vec1.add( vec2 );
-
-		// Tests.
-		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
-	}
-	
-	@Test
-	public void testAddVektorenUnderflow( ) {
-		// Initializations.
-		Vektor2D vec1 = new Vektor2D( (-Double.MAX_VALUE), 2.0 );
-		Vektor2D vec2 = new Vektor2D( 10, 2.0 );
-		Vektor2D erg = new Vektor2D( (-Double.MAX_VALUE), 4.0 );
-
-		// Methods.
-		vec1.add( vec2 );
-
-		// Tests.
-		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
-	}
 
 	@Test
 	public void testAddVektorenOverflow( ) {
@@ -187,18 +159,13 @@ public class Vektor2DTests {
 		// Tests.
 		assertArrayEquals( erg.getArray( ), vec1.getArray( ), 0.001 );
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> origin/master
 	@Test
 	public void testEuklDistance( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 1.0, 2.0 );
 		Vektor2D vec2 = new Vektor2D( 1.0, 4.0 );
 		double erg = 2.0;
-<<<<<<< HEAD
 
 		// Methods.
 		double terg = vec1.euklDistance( vec2 );
@@ -207,36 +174,17 @@ public class Vektor2DTests {
 		assertEquals( erg, terg, 0.001 );
 	}
 
-=======
-		
-		// Methods.
-		double terg = vec1.euklDistance(vec2 ); 
-		
-		
-		// Tests.
-		assertEquals( erg, terg, 0.001 );
-	}
-	
->>>>>>> origin/master
 	@Test
 	public void testcoseq( ) {
 		// Initializations.
 		Vektor2D vec1 = new Vektor2D( 4.0, 2.0 );
 		Vektor2D vec2 = new Vektor2D( 1.0, 8.0 );
 		double erg = 0.982793723247329;
-<<<<<<< HEAD
 
 		// Methods.
 		double terg = vec1.cosEquation( vec2 );
 		System.out.println( terg );
 
-=======
-		
-		// Methods.
-		double terg = vec1.cosEquation( vec2 ); 
-		System.out.println( terg );
-		
->>>>>>> origin/master
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
 	}
