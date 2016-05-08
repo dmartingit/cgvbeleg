@@ -1,7 +1,7 @@
 package math;
 
 public class Vektor2D {
-	private double x, y;
+	public double x, y;
 
 	// ********************************************//
 	public Vektor2D( ) {
