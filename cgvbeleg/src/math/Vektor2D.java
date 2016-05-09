@@ -7,17 +7,16 @@ public class Vektor2D {
 	public Vektor2D( ) {
 		this( 0.0, 0.0 );
 	}
+	
+	// ********************************************//
+	public Vektor2D( Vektor2D src ) {
+		this( src.x, src.y );
+	}
 
 	// ********************************************//
 	public Vektor2D( double x, double y ) {
 		this.x = x;
 		this.y = y;
-	}
-
-	// ********************************************//
-	public Vektor2D( Vektor2D src ) {
-		this.x = src.x;
-		this.y = src.y;
 	}
 
 	// ********************************************//

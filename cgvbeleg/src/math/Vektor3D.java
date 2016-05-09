@@ -9,17 +9,15 @@ public class Vektor3D {
 	}
 
 	// ********************************************//
+	public Vektor3D( Vektor3D src ) {
+		this( src.x, src.y, src.z );
+	}
+
+	// ********************************************//
 	public Vektor3D( double x, double y, double z ) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-	}
-
-	// ********************************************//
-	public Vektor3D( Vektor3D src ) {
-		this.x = src.x;
-		this.y = src.y;
-		this.z = src.z;
 	}
 
 	// ********************************************//
