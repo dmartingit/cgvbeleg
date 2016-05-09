@@ -175,7 +175,7 @@ public class LineareAlgebraTests {
 
 		// Methods.
 		double terg = LineareAlgebra.euklDistance( vec1, vec2 );
-		System.out.println( terg );
+		
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
 	}
@@ -189,7 +189,6 @@ public class LineareAlgebraTests {
 
 		// Methods.
 		double terg = LineareAlgebra.euklDistance( vec1, vec2 );
-		System.out.println( terg );
 		// Tests.
 		assertEquals( erg, terg, 0.001 );
 	}

@@ -183,7 +183,6 @@ public class Vektor2DTests {
 
 		// Methods.
 		double terg = vec1.cosEquation( vec2 );
-		System.out.println( terg );
 
 		// Tests.
 		assertEquals( erg, terg, 0.001 );

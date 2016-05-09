@@ -67,7 +67,7 @@ public class Vektor2D {
 		} else {
 			// Underflow
 			if ( ( -Double.MAX_VALUE - y ) > x ) {
-				return ( -Double.MAX_VALUE );
+				return -Double.MAX_VALUE;
 			}
 		}
 		return x + y;
@@ -89,7 +89,7 @@ public class Vektor2D {
 		} else {
 			// Underflow
 			if ( ( Double.MAX_VALUE + y ) < x ) {
-				return Double.MIN_VALUE;
+				return -Double.MAX_VALUE;
 			}
 		}
 		return x - y;
@@ -110,7 +110,7 @@ public class Vektor2D {
 		} else if ( y < -1 ) {
 			// Underflow
 			if ( ( ( -Double.MAX_VALUE / y ) < x ) || ( ( Double.MAX_VALUE / y ) > x ) )
-				return Double.MIN_VALUE;
+				return -Double.MAX_VALUE;
 		} else if ( ( y == -1.0 ) && ( x == Double.MIN_VALUE ) ) {
 			// MIN_VALUE - Error (handle like Overflow)
 			return Double.MAX_VALUE;
@@ -127,12 +127,8 @@ public class Vektor2D {
 
 	// ********************************************//
 	public double checkDiv( double x, double y ) {
-		if ( ( x == Double.MIN_VALUE ) && ( y == -1.0 ) ) {
+		if ( ( ( x == Double.MIN_VALUE ) && ( y == -1.0 ) ) || y == 0.0 ) {
 			// MIN_VALUE - Error (handle like Overflow)
-			return 0.0;
-		}
-		if ( y == 0.0 ) {
-			// Invalid Operation (handle like Overflow)
 			return Double.MAX_VALUE;
 		}
 		return x / y;
