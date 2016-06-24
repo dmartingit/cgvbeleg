@@ -1,16 +1,19 @@
 package full_prog;
 
+import math.Vektor2D;
+
 public abstract class BasisObjekt {
    public int id;
-   public float xPos, yPos;
+   public Vektor2D pos;
+
    
    public BasisObjekt() {
-      this(0, 0);
+      this(new Vektor2D(0,0));
    }
    
-   public BasisObjekt(float xPos, float yPos) {
-      this.xPos = xPos;
-      this.yPos = yPos;
+   public BasisObjekt(Vektor2D src) {
+      this.pos.x = src.x;
+      this.pos.y = src.y;
    }
   
    public abstract void render();

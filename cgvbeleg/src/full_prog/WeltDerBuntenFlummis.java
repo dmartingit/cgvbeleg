@@ -17,6 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.lwjgl.opengl.Display;
 
 import frame.BasisFenster;
+import math.Vektor2D;
 
 public class WeltDerBuntenFlummis extends BasisFenster {
    private ObjektManager flummies;
@@ -30,8 +31,8 @@ public class WeltDerBuntenFlummis extends BasisFenster {
    private void erzeugeFlummies(int anz) {
       Random rand = ThreadLocalRandom.current();
       for (int i=0; i<anz; i++) {
-         flummies.registriereFlummi(new Flummi(rand.nextInt(640), 
-               rand.nextInt(480),
+         flummies.registriereFlummi(new Dreiecke(new Vektor2D(rand.nextInt(640), 
+               rand.nextInt(480)),
                0.1f,//rand.nextFloat()+1,
                0.1f,
               // rand.nextInt(20)+1, 
@@ -54,9 +55,9 @@ public class WeltDerBuntenFlummis extends BasisFenster {
          glDisable(GL_DEPTH_TEST);
         
          for (int i=1; i<=flummies.getFlummiSize(); i++) {
-            Flummi aktFlummi = flummies.getFlummi(i);
+            Dreiecke aktFlummi = flummies.getFlummi(i);
             aktFlummi.render();
-            aktFlummi.update();
+            //aktFlummi.update();
          }
 
          Display.update();

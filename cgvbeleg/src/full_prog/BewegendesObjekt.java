@@ -1,14 +1,19 @@
+
 package full_prog;
-
+import math.*;
 public abstract class BewegendesObjekt extends BasisObjekt {
-   public float ySpeed;
-   public float xSpeed;
+   public Vektor2D speed;
+   public double masse;
+   public Verhalten verhalten = null;
    
-   public BewegendesObjekt(float xPos, float yPos, float ySpeed, float xSpeed) {
-      super(xPos, yPos);
-      this.ySpeed = ySpeed;
-      this.xSpeed = xSpeed;
+   public BewegendesObjekt(Vektor2D src, float ySpeed, float xSpeed) {
+      super(src);
+      this.speed.x = xSpeed;
+      this.speed.y = ySpeed;
    }
+   public void setVerhalten(Verhalten verhalten) {
+	      this.verhalten = verhalten;
+	   }
 
-   public abstract void update();
+   //public abstract void update();
 }
