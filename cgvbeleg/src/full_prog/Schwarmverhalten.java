@@ -14,21 +14,16 @@ public class Schwarmverhalten implements Verhalten {
 	
 	public Vektor2D seek(Vektor2D target) {
 		Vektor2D help;
-		System.out.println( target );
-		System.out.println(dreieck.pos);
-		System.out.println("********");
-		/*help = LineareAlgebra.sub(target, dreieck.pos);
+		help = LineareAlgebra.sub(target, dreieck.pos);
 		System.out.println(help);
 		help.normalize();
 		System.out.println(help);
-		help = LineareAlgebra.mult(target,dreieck.maxVelocity);
-		System.out.println(help);
+		//help.mult(dreieck.maxVelocity);
+		//System.out.println(help);
 		help = LineareAlgebra.sub(help, dreieck.velocity);
-		System.out.println(help);
-		System.out.println("****************");
+//		System.out.println("HELP: "+ help);
+//		System.out.println("****************");
 		return help;
-		*/
-		return target;
 		}
 	
 	@Override
