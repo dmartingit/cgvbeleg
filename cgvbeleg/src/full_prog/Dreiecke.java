@@ -16,12 +16,12 @@ public class Dreiecke extends BewegendesObjekt {
       this(new Vektor2D(0,0), new Vektor2D(0.2f, 0.1f), 1, 1, 0);
    }
    
-   public Dreiecke(Vektor2D src, Vektor2D speed) {
-      this(src, speed, 1, 1, 0);
+   public Dreiecke(Vektor2D src, Vektor2D velocity) {
+      this(src, velocity, 1, 1, 0);
    }
    
-   public Dreiecke(Vektor2D src, Vektor2D speed, float r, float g, float b) {
-      super(src , speed);
+   public Dreiecke(Vektor2D src, Vektor2D velocity, float r, float g, float b) {
+      super(src , velocity);
       this.r=r;
       this.g=g;
       this.b=b;

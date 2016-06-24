@@ -32,7 +32,7 @@ public class WeltDerBuntenFlummis extends BasisFenster {
       Random rand = ThreadLocalRandom.current();
       for (int i=0; i<anz; i++) {
         Dreiecke dreieck = new Dreiecke(new Vektor2D(rand.nextInt(640), 
-               rand.nextInt(480)),new Vektor2D(0.1f,0.1f), 0.1f, 0.1f, 0.1f);
+               rand.nextInt(480)),new Vektor2D(0.1,0.1), 0.1f, 0.1f, 0.1f);
         dreieck.setVerhalten(new Schwarmverhalten(dreieck) );
         dreiecke.registriereDreiecke( dreieck );
       } 
