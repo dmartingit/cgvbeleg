@@ -34,9 +34,10 @@ public class ObjektManager {
       return dreiecke.get(new Integer(objID));
    }
    
-   public HashMap<Integer, Dreiecke> getFlummiMap() {
+   public HashMap<Integer, Dreiecke> getDreieckeMap() {
       return dreiecke;
    }
+  
    
    public int getDreieckSize() {
       return dreiecke.size();

@@ -25,8 +25,8 @@ public class WeltDerBuntenFlummis extends BasisFenster {
    public WeltDerBuntenFlummis() {
       super("CG_Beleg", 640, 480);
       dreiecke = ObjektManager.getExemplar();
-      erzeugeFlummies(30);
-   }
+      erzeugeFlummies(300);
+      }
    
    private void erzeugeFlummies(int anz) {
       Random rand = ThreadLocalRandom.current();
