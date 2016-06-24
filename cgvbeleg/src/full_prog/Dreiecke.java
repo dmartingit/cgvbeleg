@@ -13,34 +13,20 @@ public class Dreiecke extends BewegendesObjekt {
    private float r, g, b;
 
    public Dreiecke() {
-      this(new Vektor2D(0,0), 0.2f, 0.1f, 1, 1, 0);
+      this(new Vektor2D(0,0), new Vektor2D(0.2f, 0.1f), 1, 1, 0);
    }
    
-   public Dreiecke(Vektor2D src, float ySpeed, float xSpeed) {
-      this(src, ySpeed, xSpeed, 1, 1, 0);
+   public Dreiecke(Vektor2D src, Vektor2D speed) {
+      this(src, speed, 1, 1, 0);
    }
    
-   public Dreiecke(Vektor2D src, float ySpeed, float xSpeed, float r, float g, float b) {
-      super(src , ySpeed, xSpeed);
+   public Dreiecke(Vektor2D src, Vektor2D speed, float r, float g, float b) {
+      super(src , speed);
       this.r=r;
       this.g=g;
       this.b=b;
       this.id = ++objCounter;
    }
-
-   /*@Override
-   public void update() {
-	   
-      yPos=yPos+ySpeed;
-      xPos+= xSpeed;
-
-      if (yPos>480 || yPos<0)
-         ySpeed = ySpeed * -1;
-      if(xPos > 640 || xPos < 0)
-    	 xSpeed *= -1;
-    	
-      
-   }*/
 
    @Override
    public void render() {

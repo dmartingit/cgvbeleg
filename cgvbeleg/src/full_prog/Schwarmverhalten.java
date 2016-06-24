@@ -1,20 +1,22 @@
 package full_prog;
 
-import math.*;
 
 public class Schwarmverhalten implements Verhalten {
 	
-	public BewegendesObjekt obj;
+	//public BewegendesObjekt obj;
+	public Dreiecke dreieck;
 	
-	public Schwarmverhalten(BewegendesObjekt obj){
-		this.obj = obj;		
+	public Schwarmverhalten(Dreiecke dreieck){
+		this.dreieck = dreieck;		
 	}
 	
 	@Override
 	public void update(){
-		Vektor2D val = new Vektor2D(0.9f, 0.3f);
-		obj.speed.add( val );
-		obj.pos.add( obj.speed );
+		dreieck.pos.add( dreieck.speed );
+		if(dreieck.pos.y > 480 || dreieck.pos.y < 0)
+			dreieck.speed.y *= -1;
+		if(dreieck.pos.x > 640 || dreieck.pos.x < 0)
+			dreieck.speed.x *= -1;
 		
 				
 	}

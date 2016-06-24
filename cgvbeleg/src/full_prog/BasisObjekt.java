@@ -12,8 +12,7 @@ public abstract class BasisObjekt {
    }
    
    public BasisObjekt(Vektor2D src) {
-      this.pos.x = src.x;
-      this.pos.y = src.y;
+      this.pos = new Vektor2D(src);
    }
   
    public abstract void render();

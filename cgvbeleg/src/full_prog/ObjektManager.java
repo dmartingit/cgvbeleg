@@ -3,14 +3,14 @@ package full_prog;
 import java.util.HashMap;
 
 public class ObjektManager {
-   private HashMap<Integer, Dreiecke> flummies;
+   private HashMap<Integer, Dreiecke> dreiecke;
 
    // ****************************************************
    // ObjektManager als Singleton realisieren
    private static ObjektManager exemplar = new ObjektManager();
 
    private ObjektManager() {
-      flummies = new HashMap<Integer, Dreiecke>();
+      dreiecke = new HashMap<Integer, Dreiecke>();
    }
 
    public static ObjektManager getExemplar() {
@@ -22,23 +22,23 @@ public class ObjektManager {
    }
    // ***************************************************
    
-   public void registriereFlummi(Dreiecke obj) {
-      flummies.put(new Integer(obj.id), obj);
+   public void registriereDreiecke(Dreiecke obj) {
+      dreiecke.put(new Integer(obj.id), obj);
    }
 
-   public void entferneFlummi(Dreiecke obj) {
-      flummies.remove(obj);
+   public void entferneDreiecke(Dreiecke obj) {
+      dreiecke.remove(obj);
    }
    
-   public Dreiecke getFlummi(int objID) {
-      return flummies.get(new Integer(objID));
+   public Dreiecke getDreieck(int objID) {
+      return dreiecke.get(new Integer(objID));
    }
    
    public HashMap<Integer, Dreiecke> getFlummiMap() {
-      return flummies;
+      return dreiecke;
    }
    
-   public int getFlummiSize() {
-      return flummies.size();
+   public int getDreieckSize() {
+      return dreiecke.size();
    }
 }
