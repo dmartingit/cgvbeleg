@@ -98,10 +98,10 @@ public class Schwarmverhalten implements Verhalten {
 			Vektor2D follow = arrive(target);
 			dreieck.getGeschwindigkeit( ).add(follow);
 			Vektor2D ali = alignment(300.f);
-			ali.mult(1000);
+			ali.mult(1500);
 			dreieck.getGeschwindigkeit( ).add(ali);
 			Vektor2D sep = separation(25.f);
-			sep.mult(1000);
+			sep.mult(1500);
 			dreieck.getGeschwindigkeit( ).add(sep);
 			Vektor2D coh = cohesion(300);
 			dreieck.getGeschwindigkeit( ).add(coh);
