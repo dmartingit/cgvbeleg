@@ -20,49 +20,48 @@ import frame.BasisFenster;
 import math.Vektor2D;
 
 public class WeltDerBuntenDreiecke extends BasisFenster {
-   private ObjektManager dreiecke;
-   
-   public WeltDerBuntenDreiecke() {
-      super("CG_Beleg", 640, 480);
-      dreiecke = ObjektManager.getExemplar();
-      erzeugeDreiecke(100);
-      }
-   
-   private void erzeugeDreiecke(int anz) {
-      Random rand = ThreadLocalRandom.current();
-      for (int i=0; i<anz; i++) {
-        Dreiecke dreieck = new Dreiecke(new Vektor2D(rand.nextInt(640), 
-               rand.nextInt(480)),new Vektor2D(0.1,0.1), 0.1f, 0.1f, 0.1f);
-        dreieck.setVerhalten(new Schwarmverhalten(dreieck, dreiecke) );
-        dreiecke.registriereDreiecke( dreieck );
-      } 
-   }
+	private ObjektManager dreiecke;
 
-   @Override
-   public void renderLoop() {
-      while (!Display.isCloseRequested()) {
-         glClearColor(0.6f, 0.8f, 0.1f, 1);
-         glClear(GL_COLOR_BUFFER_BIT);
-         
-         // ist ja 2d
-         glMatrixMode (GL_PROJECTION);
-         glLoadIdentity ();
-         glOrtho (0, 640, 480, 0, 0, 1);
-         glMatrixMode (GL_MODELVIEW);
-         glDisable(GL_DEPTH_TEST);
-        
-         for (int i=1; i<=dreiecke.getDreieckSize(); i++) {
-            Dreiecke aktFlummi = dreiecke.getDreieck(i);
-            aktFlummi.render();
-            aktFlummi.update();
-         }
+	public WeltDerBuntenDreiecke( ) {
+		super( "CG_Beleg", 640, 480 );
+		dreiecke = ObjektManager.getExemplar( );
+		erzeugeDreiecke( 100 );
+	}
 
-         Display.update();
-      }
-   }
-   
-   public static void main(String[] args) {
-      new WeltDerBuntenDreiecke().start();
-   }
+	private void erzeugeDreiecke( int anz ) {
+		Random rand = ThreadLocalRandom.current( );
+		for ( int i = 0; i < anz; i++ ) {
+			Dreiecke dreieck = new Dreiecke( new Vektor2D( rand.nextInt( 640 ), rand.nextInt( 480 ) ),
+					new Vektor2D( 0.1, 0.1 ), 0.1f, 1.f, 0.1f );
+			dreieck.setVerhalten( new Schwarmverhalten( dreieck, dreiecke ) );
+			dreiecke.registriereDreiecke( dreieck );
+		}
+	}
+
+	@Override
+	public void renderLoop( ) {
+		while ( !Display.isCloseRequested( ) ) {
+			glClearColor( 0.1f, 0.2f, 0.3f, 1 );
+			glClear( GL_COLOR_BUFFER_BIT );
+
+			// ist ja 2d
+			glMatrixMode( GL_PROJECTION );
+			glLoadIdentity( );
+			glOrtho( 0, 640, 480, 0, 0, 1 );
+			glMatrixMode( GL_MODELVIEW );
+			glDisable( GL_DEPTH_TEST );
+
+			for ( int i = 1; i <= dreiecke.getDreieckSize( ); i++ ) {
+				Dreiecke aktFlummi = dreiecke.getDreieck( i );
+				aktFlummi.render( );
+				aktFlummi.update( );
+			}
+
+			Display.update( );
+		}
+	}
+
+	public static void main( String[ ] args ) {
+		new WeltDerBuntenDreiecke( ).start( );
+	}
 }
-
