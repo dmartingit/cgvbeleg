@@ -7,7 +7,7 @@ public class Vektor2D {
 	public Vektor2D( ) {
 		this( 0.0, 0.0 );
 	}
-	
+
 	// ********************************************//
 	public Vektor2D( Vektor2D src ) {
 		this( src.x, src.y );

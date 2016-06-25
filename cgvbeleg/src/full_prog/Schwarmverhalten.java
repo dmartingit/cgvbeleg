@@ -16,7 +16,7 @@ public class Schwarmverhalten implements Verhalten {
 
 	public Vektor2D arrive( Vektor2D target ) {
 		Vektor2D help;
-		help = LineareAlgebra.sub( target, dreieck.getPosition( ) );
+		help = LineareAlgebra.sub( dreieck.getPosition( ), target );
 		double dist = help.length( );
 		double speed = dreieck.getMaxGeschwindigkeit( ) * ( dist / 1000 );
 		speed = Math.min( speed, dreieck.getMaxGeschwindigkeit( ) );
@@ -33,7 +33,8 @@ public class Schwarmverhalten implements Verhalten {
 			BasisObjekt bObj = om.getDreieck( i );
 			if ( bObj instanceof BewegendesObjekt ) {
 				BewegendesObjekt bObjF = ( BewegendesObjekt ) bObj;
-				if ( ( LineareAlgebra.euklDistance( dreieck.getPosition( ), bObjF.getPosition( ) ) ) < separationDist ) {
+				if ( ( LineareAlgebra.euklDistance( dreieck.getPosition( ),
+						bObjF.getPosition( ) ) ) < separationDist ) {
 					help = LineareAlgebra.sub( dreieck.getPosition( ), bObjF.getPosition( ) );
 					double length = help.length( );
 					help.normalize( );
@@ -67,7 +68,7 @@ public class Schwarmverhalten implements Verhalten {
 		return steeringForce;
 	}
 
-	public Vektor2D cohesion( ) {
+	public Vektor2D cohesion( double abstand ) {
 		Vektor2D steeringForce = new Vektor2D( 0, 0 );
 		int count = 0;
 		for ( int i = 0; i < om.getDreieckSize( ); i++ ) {
@@ -76,12 +77,15 @@ public class Schwarmverhalten implements Verhalten {
 			BasisObjekt bObj = om.getDreieck( i );
 			if ( bObj instanceof BewegendesObjekt ) {
 				BewegendesObjekt bObjF = ( BewegendesObjekt ) bObj;
-				steeringForce.add( bObjF.getPosition( ) );
-				count++;
+				if ( ( LineareAlgebra.euklDistance( bObjF.getPosition( ), dreieck.getPosition( ) ) ) < abstand ) {
+					steeringForce.add( bObjF.getPosition( ) );
+					count++;
+				}
 			}
 		}
-
-		steeringForce.mult( ( 1.f / count ) );
+		if ( count > 0 ) {
+			steeringForce.mult( ( 1.f / count ) );
+		}
 		steeringForce.sub( dreieck.getPosition( ) );
 		return steeringForce;
 	}
@@ -91,15 +95,27 @@ public class Schwarmverhalten implements Verhalten {
 		boolean leftButtonDown = Mouse.isButtonDown( 0 );
 		if ( leftButtonDown ) {
 			Vektor2D target = new Vektor2D( Mouse.getX( ), 480 - Mouse.getY( ) );
-			Vektor2D follow = arrive( target );
-			Vektor2D ali = alignment( 225.5f );
-			Vektor2D coh = cohesion( );
-			Vektor2D sep = separation( 30 );
-			Vektor2D force_1 = LineareAlgebra.add( follow, ali );
-			Vektor2D force_2 = LineareAlgebra.add( force_1, sep );
-			Vektor2D force_3 = LineareAlgebra.add( force_2, coh );
-			dreieck.getPosition( ).add( force_2 );
+			Vektor2D follow = arrive(target);
+			dreieck.getGeschwindigkeit( ).add(follow);
+			Vektor2D ali = alignment(300.f);
+			ali.mult(1000);
+			dreieck.getGeschwindigkeit( ).add(ali);
+			Vektor2D sep = separation(25.f);
+			sep.mult(1000);
+			dreieck.getGeschwindigkeit( ).add(sep);
+			Vektor2D coh = cohesion(300);
+			dreieck.getGeschwindigkeit( ).add(coh);
+			
+			if (dreieck.getGeschwindigkeit( ).length( ) > 0.1) {
+				dreieck.getGeschwindigkeit( ).normalize( );
+				dreieck.getGeschwindigkeit( ).mult( 0.1 );
+			}
+			dreieck.getPosition( ).add( dreieck.getGeschwindigkeit( ) );
+			
+			dreieck.getPosition( ).setX( dreieck.getPosition( ).getX() + 640 );
+			dreieck.getPosition( ).setY( dreieck.getPosition( ).getY() + 480 );
+			dreieck.getPosition( ).setX( dreieck.getPosition( ).getX() % 640 );
+			dreieck.getPosition( ).setY( dreieck.getPosition( ).getY() % 480 );
 		}
-
 	}
 }
