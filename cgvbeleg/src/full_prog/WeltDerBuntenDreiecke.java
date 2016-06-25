@@ -21,11 +21,14 @@ import math.Vektor2D;
 
 public class WeltDerBuntenDreiecke extends BasisFenster {
 	private ObjektManager dreiecke;
+	private ObjektManager leader;
 
 	public WeltDerBuntenDreiecke( ) {
 		super( "CG_Beleg", 640, 480 );
-		dreiecke = ObjektManager.getExemplar( );
+		dreiecke = ObjektManager.getExemplar1( );
+		leader = ObjektManager.getExemplar2( );
 		erzeugeDreiecke( 100 );
+		erzeugeLeader( 3 );
 	}
 
 	private void erzeugeDreiecke( int anz ) {
@@ -35,6 +38,16 @@ public class WeltDerBuntenDreiecke extends BasisFenster {
 					new Vektor2D( 0.1, 0.1 ), 0.1f, 1.f, 0.1f );
 			dreieck.setVerhalten( new Schwarmverhalten( dreieck, dreiecke ) );
 			dreiecke.registriereDreiecke( dreieck );
+		}
+	}
+	
+	private void erzeugeLeader( int anz ) {
+		Random rand = ThreadLocalRandom.current( );
+		for ( int i = 0; i < anz; i++ ) {
+			Leader lead = new Leader( new Vektor2D( rand.nextInt( 640 ), rand.nextInt( 480 ) ),
+					new Vektor2D( 0.1, 0.1 ), 0.1f, 1.f, 1.f );
+			lead.setVerhalten( new Leaderverhalten( lead, leader ) );
+			leader.registriereLeader( lead );
 		}
 	}
 
@@ -55,6 +68,11 @@ public class WeltDerBuntenDreiecke extends BasisFenster {
 				Dreiecke aktFlummi = dreiecke.getDreieck( i );
 				aktFlummi.render( );
 				aktFlummi.update( );
+			}
+			for (int i=1; i <= leader.getLeaderSize( ); i++) {
+				Leader aktLeader = leader.getLeader( i );
+				aktLeader.render( );
+				aktLeader.update( );
 			}
 
 			Display.update( );

@@ -7,7 +7,7 @@ import org.lwjgl.input.Mouse;
 public class Schwarmverhalten implements Verhalten {
 
 	public Dreiecke dreieck;
-	public ObjektManager om = ObjektManager.getExemplar( );
+	public ObjektManager om = ObjektManager.getExemplar1( );
 
 	public Schwarmverhalten( Dreiecke dreieck, ObjektManager src_om ) {
 		this.dreieck = dreieck;

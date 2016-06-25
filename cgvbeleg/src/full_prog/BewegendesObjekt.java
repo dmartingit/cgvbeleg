@@ -6,14 +6,12 @@ import math.*;
 public abstract class BewegendesObjekt extends BasisObjekt {
 	private Vektor2D m_Geschwindigkeit;
 	private double m_maxGeschwindigkeit;
-	private double m_Masse;
 	private Verhalten m_Verhalten = null;
 
 	public BewegendesObjekt( Vektor2D pos, Vektor2D geschwindigkeit, double maxGeschwindigkeit, double masse ) {
 		super( pos );
 		setGeschwindigkeit( geschwindigkeit );
 		setMaxGeschwindigkeit( maxGeschwindigkeit);
-		setMasse( masse );
 	}
 
 	public void setGeschwindigkeit( Vektor2D velocity ) {
@@ -30,14 +28,6 @@ public abstract class BewegendesObjekt extends BasisObjekt {
 	
 	public double getMaxGeschwindigkeit(  ) {
 		return this.m_maxGeschwindigkeit;
-	}
-
-	public void setMasse( double mass ) {
-		this.m_Masse = mass;
-	}
-	
-	public double getMasse( ) {
-		return this.m_Masse;
 	}
 	
 	public void setVerhalten( Verhalten verhalten ) {
