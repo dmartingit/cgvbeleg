@@ -8,7 +8,7 @@ public abstract class BewegendesObjekt extends BasisObjekt {
 	private double m_maxGeschwindigkeit;
 	private Verhalten m_Verhalten = null;
 
-	public BewegendesObjekt( Vektor2D pos, Vektor2D geschwindigkeit, double maxGeschwindigkeit, double masse ) {
+	public BewegendesObjekt( Vektor2D pos, Vektor2D geschwindigkeit, double maxGeschwindigkeit ) {
 		super( pos );
 		setGeschwindigkeit( geschwindigkeit );
 		setMaxGeschwindigkeit( maxGeschwindigkeit);

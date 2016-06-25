@@ -21,7 +21,7 @@ public class Dreiecke extends BewegendesObjekt {
 	}
 
 	public Dreiecke( Vektor2D src, Vektor2D velocity, float r, float g, float b ) {
-		super( src, velocity, 0.8f, 0 );
+		super( src, velocity, 0.8f );
 		this.r = r;
 		this.g = g;
 		this.b = b;
