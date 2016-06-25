@@ -19,16 +19,16 @@ import org.lwjgl.opengl.Display;
 import frame.BasisFenster;
 import math.Vektor2D;
 
-public class WeltDerBuntenFlummis extends BasisFenster {
+public class WeltDerBuntenDreiecke extends BasisFenster {
    private ObjektManager dreiecke;
    
-   public WeltDerBuntenFlummis() {
+   public WeltDerBuntenDreiecke() {
       super("CG_Beleg", 640, 480);
       dreiecke = ObjektManager.getExemplar();
-      erzeugeFlummies(100);
+      erzeugeDreiecke(100);
       }
    
-   private void erzeugeFlummies(int anz) {
+   private void erzeugeDreiecke(int anz) {
       Random rand = ThreadLocalRandom.current();
       for (int i=0; i<anz; i++) {
         Dreiecke dreieck = new Dreiecke(new Vektor2D(rand.nextInt(640), 
@@ -62,7 +62,7 @@ public class WeltDerBuntenFlummis extends BasisFenster {
    }
    
    public static void main(String[] args) {
-      new WeltDerBuntenFlummis().start();
+      new WeltDerBuntenDreiecke().start();
    }
 }
 
