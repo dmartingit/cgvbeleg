@@ -10,8 +10,9 @@ public class Schwarmverhalten implements Verhalten {
 	public ObjektManager om = ObjektManager.getExemplar();
 	
 	
-	public Schwarmverhalten(Dreiecke dreieck){
-		this.dreieck = dreieck;		
+	public Schwarmverhalten(Dreiecke dreieck, ObjektManager src_om){
+		this.dreieck = dreieck;
+		this.om = src_om;
 	}
 	
 	public Vektor2D seek(Vektor2D target) {
@@ -29,6 +30,7 @@ public class Schwarmverhalten implements Verhalten {
 			double speed = dreieck.maxVelocity * (dist / 1000);
 			speed = Math.min(speed, dreieck.maxVelocity);
 			help.mult(speed / dist);
+			System.out.println(help);
 			return help;
 		}
 	 public Vektor2D separation(float separationDist) {
@@ -97,10 +99,10 @@ public class Schwarmverhalten implements Verhalten {
 		boolean leftButtonDown = Mouse.isButtonDown(0);
 		if (leftButtonDown) {
 			Vektor2D target = new Vektor2D(Mouse.getX(), 640 - Mouse.getY());
-			// Vektor2D temp = seek(target);
+			Vektor2D temp = seek(target);
 			Vektor2D follow = arrive(target);
-			Vektor2D sep = separation(5);
-			Vektor2D ali = alignment(5);
+			Vektor2D sep = separation(2000);
+			Vektor2D ali = alignment(225.5f);
 			Vektor2D coh = cohesion();
 			Vektor2D force_1 = LineareAlgebra.add(sep, follow);
 			Vektor2D force_2 = LineareAlgebra.add(force_1, ali);

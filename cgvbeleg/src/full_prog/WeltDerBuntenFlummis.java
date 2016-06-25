@@ -25,7 +25,7 @@ public class WeltDerBuntenFlummis extends BasisFenster {
    public WeltDerBuntenFlummis() {
       super("CG_Beleg", 640, 480);
       dreiecke = ObjektManager.getExemplar();
-      erzeugeFlummies(300);
+      erzeugeFlummies(100);
       }
    
    private void erzeugeFlummies(int anz) {
@@ -33,7 +33,7 @@ public class WeltDerBuntenFlummis extends BasisFenster {
       for (int i=0; i<anz; i++) {
         Dreiecke dreieck = new Dreiecke(new Vektor2D(rand.nextInt(640), 
                rand.nextInt(480)),new Vektor2D(0.1,0.1), 0.1f, 0.1f, 0.1f);
-        dreieck.setVerhalten(new Schwarmverhalten(dreieck) );
+        dreieck.setVerhalten(new Schwarmverhalten(dreieck, dreiecke) );
         dreiecke.registriereDreiecke( dreieck );
       } 
    }
@@ -41,7 +41,7 @@ public class WeltDerBuntenFlummis extends BasisFenster {
    @Override
    public void renderLoop() {
       while (!Display.isCloseRequested()) {
-         glClearColor(0.1f, 0.2f, 0.3f, 1);
+         glClearColor(0.6f, 0.8f, 0.1f, 1);
          glClear(GL_COLOR_BUFFER_BIT);
          
          // ist ja 2d
