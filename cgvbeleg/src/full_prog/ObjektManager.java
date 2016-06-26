@@ -3,8 +3,8 @@ package full_prog;
 import java.util.HashMap;
 
 public class ObjektManager {
-	private HashMap < Integer, Dreiecke > dreiecke;
-	private HashMap < Integer, Leader > leader;
+	private HashMap < Integer, Dreiecke > m_Dreiecke;
+	private HashMap < Integer, Leader > m_Leader;
 
 	// ****************************************************
 	// ObjektManager als Singleton realisieren
@@ -12,8 +12,8 @@ public class ObjektManager {
 	private static ObjektManager exemplar2 = new ObjektManager( );
 
 	private ObjektManager( ) {
-		dreiecke = new HashMap < Integer, Dreiecke >( );
-		leader = new HashMap < Integer, Leader >( );
+		m_Dreiecke = new HashMap < Integer, Dreiecke >( );
+		m_Leader = new HashMap < Integer, Leader >( );
 	}
 
 	public static ObjektManager getExemplar1( ) {
@@ -30,42 +30,42 @@ public class ObjektManager {
 	// ***************************************************
 
 	public void registriereDreiecke( Dreiecke obj ) {
-		dreiecke.put( new Integer( obj.getId( ) ), obj );
+		m_Dreiecke.put( new Integer( obj.getId( ) ), obj );
 	}
 	
 	public void registriereLeader( Leader obj ) {
-		leader.put( new Integer( obj.getId( ) ), obj );
+		m_Leader.put( new Integer( obj.getId( ) ), obj );
 	}
 
 	public void entferneDreiecke( Dreiecke obj ) {
-		dreiecke.remove( obj );
+		m_Dreiecke.remove( obj );
 	}
 
 	public void entferneLeader( Leader obj ) {
-		leader.remove( obj );
+		m_Leader.remove( obj );
 	}
 
 	public Dreiecke getDreieck( int objID ) {
-		return dreiecke.get( new Integer( objID ) );
+		return m_Dreiecke.get( new Integer( objID ) );
 	}
 	
 	public Leader getLeader( int objID ) {
-		return leader.get( new Integer( objID ) );
+		return m_Leader.get( new Integer( objID ) );
 	}
 
 	public HashMap < Integer, Dreiecke > getDreieckeMap( ) {
-		return dreiecke;
+		return m_Dreiecke;
 	}
 	
 	public HashMap < Integer, Leader > getLeaderMap( ) {
-		return leader;
+		return m_Leader;
 	}
 
 	public int getDreieckSize( ) {
-		return dreiecke.size( );
+		return m_Dreiecke.size( );
 	}
 	
 	public int getLeaderSize( ) {
-		return leader.size( );
+		return m_Leader.size( );
 	}
 }

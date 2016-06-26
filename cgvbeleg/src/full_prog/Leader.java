@@ -33,9 +33,9 @@ public class Leader extends BewegendesObjekt {
 		glColor3d( r, g, b );
 		glBegin( GL_TRIANGLE_FAN );
 		glVertex2f( ( float ) getPosition( ).x, ( float ) getPosition( ).y );
-		glVertex2f( ( float ) getPosition( ).x - 10, ( float ) getPosition( ).y );
-		glVertex2f( ( float ) getPosition( ).x + 10, ( float ) getPosition( ).y );
-		glVertex2f( ( float ) getPosition( ).x, ( float ) getPosition( ).y - 10 );
+		glVertex2f( ( float ) getPosition( ).x - 20, ( float ) getPosition( ).y );
+		glVertex2f( ( float ) getPosition( ).x + 20, ( float ) getPosition( ).y );
+		glVertex2f( ( float ) getPosition( ).x, ( float ) getPosition( ).y - 20 );
 
 		glEnd( );
 	}
